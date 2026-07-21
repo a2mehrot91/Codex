@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A bright, self-contained Hello World welcome page."
+    />
+    <title>Hello, World!</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f7f8ff;
+        --muted: #b6bad6;
+        --pink: #ff6bce;
+        --blue: #6d7cff;
+        --cyan: #45e1ff;
+        --panel: rgba(16, 19, 52, 0.58);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #090a1d;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      .aurora,
+      .aurora::before,
+      .aurora::after {
+        position: absolute;
+        inset: -30vmax;
+        content: "";
+        z-index: -2;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(109, 124, 255, 0.8), transparent 24%),
+          radial-gradient(circle at 68% 42%, rgba(255, 107, 206, 0.62), transparent 21%),
+          radial-gradient(circle at 45% 74%, rgba(69, 225, 255, 0.42), transparent 22%);
+        filter: blur(25px);
+        animation: drift 17s ease-in-out infinite alternate;
+      }
+
+      .aurora::before {
+        transform: rotate(120deg) scale(0.8);
+        animation-duration: 22s;
+      }
+
+      .aurora::after {
+        transform: rotate(240deg) scale(0.9);
+        animation-duration: 28s;
+      }
+
+      .stars {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.55;
+        background-image: radial-gradient(#fff 0.7px, transparent 0.7px);
+        background-size: 27px 27px;
+        mask-image: linear-gradient(to bottom, black, transparent 78%);
+      }
+
+      main {
+        width: min(680px, calc(100% - 40px));
+      }
+
+      .card {
+        position: relative;
+        padding: clamp(2.25rem, 7vw, 5rem);
+        overflow: hidden;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 32px;
+        background: var(--panel);
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38), inset 0 1px rgba(255, 255, 255, 0.13);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .card::before {
+        position: absolute;
+        top: -120px;
+        left: 50%;
+        width: 300px;
+        height: 180px;
+        content: "";
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        filter: blur(28px);
+        transform: translateX(-50%);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 0 1.4rem;
+        color: #e6e7ff;
+        font-size: 0.75rem;
+        font-weight: 750;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 0.55rem;
+        height: 0.55rem;
+        content: "";
+        border-radius: 50%;
+        background: var(--cyan);
+        box-shadow: 0 0 18px var(--cyan);
+      }
+
+      h1 {
+        max-width: 12ch;
+        margin: 0 auto;
+        font-size: clamp(3rem, 10vw, 6.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.07em;
+      }
+
+      h1 span {
+        background: linear-gradient(125deg, #fff 20%, #d8ddff 45%, #ffb8ea 72%, #9af2ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      p {
+        max-width: 38ch;
+        margin: 1.5rem auto 2rem;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.13rem);
+        line-height: 1.65;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.9rem 1.25rem;
+        color: #11142e;
+        font-weight: 800;
+        text-decoration: none;
+        border-radius: 999px;
+        background: linear-gradient(120deg, #fff 5%, #dbdcff 55%, #a2edff);
+        box-shadow: 0 10px 30px rgba(121, 142, 255, 0.34);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .button:hover {
+        box-shadow: 0 15px 36px rgba(121, 142, 255, 0.55);
+        transform: translateY(-3px);
+      }
+
+      .button:focus-visible {
+        outline: 3px solid var(--pink);
+        outline-offset: 4px;
+      }
+
+      .sparkle {
+        font-size: 1.2em;
+        transition: transform 250ms ease;
+      }
+
+      .button:hover .sparkle {
+        transform: rotate(18deg) scale(1.15);
+      }
+
+      @keyframes drift {
+        from { transform: translate3d(-3%, -2%, 0) rotate(0deg) scale(1); }
+        to { transform: translate3d(4%, 3%, 0) rotate(12deg) scale(1.08); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="stars" aria-hidden="true"></div>
+
+    <main>
+      <section class="card" aria-labelledby="welcome-title">
+        <p class="eyebrow">Your next great idea starts here</p>
+        <h1 id="welcome-title"><span>Hello, World!</span></h1>
+        <p>
+          A tiny beginning with limitless possibilities. Build something brilliant today.
+        </p>
+        <a class="button" href="#welcome-title">
+          Let’s begin <span class="sparkle" aria-hidden="true">✦</span>
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
