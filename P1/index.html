@@ -70,6 +70,38 @@
         mask-image: linear-gradient(to bottom, black, transparent 78%);
       }
 
+      nav {
+        position: fixed;
+        top: 1.4rem;
+        left: 50%;
+        z-index: 2;
+        display: flex;
+        gap: 0.25rem;
+        padding: 0.38rem;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 999px;
+        background: rgba(14, 16, 43, 0.5);
+        box-shadow: 0 12px 34px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(14px);
+        transform: translateX(-50%);
+      }
+
+      nav a {
+        padding: 0.55rem 0.82rem;
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 999px;
+        transition: color 180ms ease, background 180ms ease;
+      }
+
+      nav a:hover,
+      nav a[aria-current="page"] {
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.13);
+      }
+
       main {
         width: min(680px, calc(100% - 40px));
       }
@@ -195,6 +227,11 @@
   <body>
     <div class="aurora" aria-hidden="true"></div>
     <div class="stars" aria-hidden="true"></div>
+    <nav aria-label="Primary navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
 
     <main>
       <section class="card" aria-labelledby="welcome-title">
@@ -203,8 +240,8 @@
         <p>
           A tiny beginning with limitless possibilities. Build something brilliant today.
         </p>
-        <a class="button" href="#welcome-title">
-          Let’s begin <span class="sparkle" aria-hidden="true">✦</span>
+        <a class="button" href="about.html">
+          Explore more <span class="sparkle" aria-hidden="true">✦</span>
         </a>
       </section>
     </main>

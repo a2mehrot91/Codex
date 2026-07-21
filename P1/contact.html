@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Get in touch with Hello World." />
+    <title>Contact · Hello, World!</title>
+    <style>
+      :root { color-scheme: dark; --ink: #f7f8ff; --muted: #b6bad6; --cyan: #45e1ff; --pink: #ff6bce; --panel: rgba(16, 19, 52, .62); }
+      * { box-sizing: border-box; }
+      body { min-height: 100vh; margin: 0; display: grid; place-items: center; overflow-x: hidden; background: #090a1d; color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .aurora { position: fixed; inset: -30vmax; z-index: -2; background: radial-gradient(circle at 28% 30%, rgba(109,124,255,.75), transparent 25%), radial-gradient(circle at 72% 50%, rgba(255,107,206,.6), transparent 22%), radial-gradient(circle at 46% 78%, rgba(69,225,255,.35), transparent 23%); filter: blur(30px); animation: drift 18s ease-in-out infinite alternate; }
+      .stars { position: fixed; inset: 0; z-index: -1; opacity: .45; background-image: radial-gradient(#fff .7px, transparent .7px); background-size: 27px 27px; mask-image: linear-gradient(to bottom, black, transparent 80%); }
+      nav { position: fixed; top: 1.4rem; left: 50%; z-index: 2; display: flex; gap: .25rem; padding: .38rem; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(14,16,43,.5); box-shadow: 0 12px 34px rgba(0,0,0,.2); backdrop-filter: blur(14px); transform: translateX(-50%); }
+      nav a { padding: .55rem .82rem; color: var(--muted); font-size: .86rem; font-weight: 700; text-decoration: none; border-radius: 999px; transition: color 180ms ease, background 180ms ease; }
+      nav a:hover, nav a[aria-current="page"] { color: var(--ink); background: rgba(255,255,255,.13); }
+      main { width: min(720px, calc(100% - 40px)); padding: 6.5rem 0 2.5rem; }
+      .card { padding: clamp(2rem, 5vw, 4rem); border: 1px solid rgba(255,255,255,.2); border-radius: 32px; background: var(--panel); box-shadow: 0 28px 80px rgba(0,0,0,.38), inset 0 1px rgba(255,255,255,.13); backdrop-filter: blur(18px); }
+      .eyebrow { display: flex; align-items: center; gap: .5rem; margin: 0 0 1.1rem; color: #e6e7ff; font-size: .75rem; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }.eyebrow::before { width: .55rem; height: .55rem; content: ""; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 18px var(--cyan); }
+      h1 { margin: 0; font-size: clamp(3rem, 8vw, 5.8rem); line-height: .95; letter-spacing: -.07em; } h1 span { background: linear-gradient(125deg, #fff 20%, #d8ddff 45%, #ffb8ea 72%, #9af2ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .intro { max-width: 49ch; margin: 1.5rem 0 2rem; color: var(--muted); font-size: clamp(1rem,2vw,1.15rem); line-height: 1.7; }
+      form { display: grid; gap: 1rem; } label { display: grid; gap: .45rem; color: #e6e7ff; font-size: .9rem; font-weight: 700; } input, textarea { width: 100%; padding: .9rem 1rem; color: var(--ink); font: inherit; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; outline: none; background: rgba(5,7,27,.35); transition: border-color 180ms ease, box-shadow 180ms ease; } textarea { min-height: 120px; resize: vertical; } input:focus, textarea:focus { border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(69,225,255,.12); }
+      button { justify-self: start; padding: .9rem 1.25rem; color: #11142e; font: inherit; font-weight: 800; cursor: pointer; border: 0; border-radius: 999px; background: linear-gradient(120deg,#fff 5%,#dbdcff 55%,#a2edff); box-shadow: 0 10px 30px rgba(121,142,255,.34); transition: transform 180ms ease; } button:hover { transform: translateY(-3px); }
+      .note { margin: 1.5rem 0 0; color: var(--muted); font-size: .86rem; line-height: 1.5; } .note a { color: #bcdfff; }
+      @keyframes drift { from { transform: translate3d(-3%,-2%,0) rotate(0deg) scale(1); } to { transform: translate3d(4%,3%,0) rotate(12deg) scale(1.08); } } @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true"></div><div class="stars" aria-hidden="true"></div>
+    <nav aria-label="Primary navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html" aria-current="page">Contact</a></nav>
+    <main>
+      <section class="card" aria-labelledby="contact-title">
+        <p class="eyebrow">Make a connection</p>
+        <h1 id="contact-title"><span>Say hello.</span></h1>
+        <p class="intro">Have an idea, a question, or a future project in mind? Leave a note and let the conversation begin.</p>
+        <form action="#" method="post">
+          <label>Your name <input type="text" name="name" autocomplete="name" placeholder="Ada Lovelace" required /></label>
+          <label>Email address <input type="email" name="email" autocomplete="email" placeholder="ada@example.com" required /></label>
+          <label>Your message <textarea name="message" placeholder="Tell us what’s on your mind..." required></textarea></label>
+          <button type="submit">Send message ✦</button>
+        </form>
+        <p class="note">This demo form has no delivery service connected yet. Prefer email? <a href="mailto:hello@example.com">hello@example.com</a></p>
+      </section>
+    </main>
+  </body>
+</html>
